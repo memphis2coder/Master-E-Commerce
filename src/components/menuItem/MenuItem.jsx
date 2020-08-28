@@ -6,7 +6,10 @@ import './MenuItem.scss'
 function MenuItem({ title, imageUrl, size, history, linkUrl, match }) {
     return (
         <div>
-            <div className={`${size} menu-item`} style={{backgroundImage: `url(${imageUrl})`}} onClick={() => history.push(`${match.url}${linkUrl}`)}>   
+            <div className={`${size} menu-item`} 
+                style={{backgroundImage: `url(${imageUrl})`}} 
+                onClick={() => history.push(`${match.url}${linkUrl}`)} // dynamic url links are created using this method
+                >   
                     <div className="content">
                         <h2 className="title">{title}</h2>
                         <span className="subtitle">Shop</span>
@@ -16,4 +19,4 @@ function MenuItem({ title, imageUrl, size, history, linkUrl, match }) {
     )
 };
 
-export default withRouter(MenuItem);
+export default withRouter(MenuItem); // get access to the history object’s properties and the closest <Route>
