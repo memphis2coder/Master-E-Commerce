@@ -1,37 +1,34 @@
 .previewCard {
-    border: 2px solid black;
-    width: 200px;
-    height: 300px;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 10px;;
-}
-
-.previewContent {
+    width: 250px;
     display: flex;
     flex-direction: column;
-    height: 80%;
-    text-align: center;
-    padding: 5px;
-}
-
-p {
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
-}
-
-button {
-    margin: 140px auto;
-    border: none;
-    cursor: pointer;
-    padding: 1rem;
-    width: 100px;
-
-    &:hover {
-        background-color: black;
-        color: white;
+    height: 350px;
+    align-items: center;
+    margin-bottom: 1rem;
+  
+    .image {
+      width: 100%;
+      height: 95%;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 5px;
     }
-}
+  
+    .previewCard-footer {
+      width: 100%;
+      height: 5%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+  
+      .name {
+        width: 90%;
+        margin-bottom: 15px;
+      }
+  
+      .price {
+        width: 10%;
+      }
+    }
+  }
 

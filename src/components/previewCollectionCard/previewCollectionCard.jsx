@@ -2,17 +2,21 @@ import React from 'react'
 
 import './previewCollectionCard.scss';
 
-export default function previewCollectionCard({item}) {
+function previewCollectionCard({ id, name, price, imageUrl }) {
     return (
-        <div className="previewCard"
-            style={{backgroundImage: `url(${item.imageUrl})`}} >
-            <div className="previewContent">
-                <p>{item.name}</p>
-                <button>Add to cart</button>
-                <p>{item.price}</p>
+        <div className="previewCard">
+            <div
+                className="image"
+                style={{
+                    backgroundImage: `url(${imageUrl})`
+                }}
+            />
+            <div className="previewCard-footer">
+                <span className="name">{name}</span>
+                <span className="price">${price}</span>
             </div>
         </div>
     )
 }
 
-// "previewCard"
+export default previewCollectionCard;
