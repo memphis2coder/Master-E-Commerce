@@ -10,8 +10,9 @@ export default function Header() {
                 HOME
             </Link>
             <div className="menu">
-                <Link className="menu-link" to="/contact">SHOP</Link>
-                <Link className="menu-link" to="/shop">CONTACT</Link>
+                <Link className="menu-link" to="/shop">Shop</Link>
+                <Link className="menu-link" to="/contact">Contact</Link>
+                <Link className="menu-link" to="/signin">Sign In</Link>
             </div>
         </div>
     )
