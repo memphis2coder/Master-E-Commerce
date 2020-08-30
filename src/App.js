@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './components/header/Header';
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shopPage/ShopPage';
-import SignInPage from './pages/signInPage/signInpage';
+import SignInPage from './pages/signInPage/SignInpage';
 
 import './App.css';
 
