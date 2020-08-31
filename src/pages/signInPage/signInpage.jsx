@@ -7,8 +7,7 @@ function SignInPage () {
     
     return (
         <div className="signIn">
-            <h1>Sign In Page</h1>
-                <SignIn />
+            <SignIn />
         </div>
     )
 }
