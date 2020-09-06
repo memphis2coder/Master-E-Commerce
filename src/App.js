@@ -24,32 +24,32 @@ class App extends React.Component {
   // lets be aware when a user signs in and signs out; this talks to firebase
   // step 2: store the data in the state of our app to use it in our app. 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => { // from auth import
       // check if a user signs in
       if (userAuth) { // if a new user is made
-        // userRef is used to check if our database has updated that that reference
+        // userRef is used to check if our database/user has updated & a refering to the user
         const userRef = await createUserProfileDocument(userAuth);
         // You can listen to a document with the onSnapshot() method
         userRef.onSnapshot(snapShot => {
           this.setState({
-            currentUser : {
-              id: snapShot.id,
-              ...snapShot.data()
+            currentUser : { // from this.state
+              id: snapShot.id, // i want the id 
+              ...snapShot.data() // i also want the rest of the data
             }
           }, () => {
-            console.log(this.state)
+            console.log(this.state) // console the the user to see the data; console.log inside the function
           });
         });
         
       } else {
-        this.setState({currentUser : userAuth }) // when the user logs out set the user to null
+        this.setState({currentUser : userAuth }) // when the user logs out set the user to null; ** why is userAuth null?
       }
     })
   };
 
   // new lifecycle method will close the subscription
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
+  componentWillUnmount() { // unmounting the user
+    this.unsubscribeFromAuth(); // signing out 
   };
 
   render() {

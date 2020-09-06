@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-// TODO: Replace the following with your app's Firebase project configuration
+// TODO: Replace the following with your app's Firebase project configuration; this can be found on the firebase website 
 const config = {
     apiKey: "AIzaSyDJV2L3nblcjU35M2Q3idWOcJKkohU4V6U",
     authDomain: "e-commerce-36936.firebaseapp.com",
@@ -17,21 +17,23 @@ const config = {
     measurementId: "G-FQN9LTL86Y"
 };
 
-// allows us to take user object and store it inside database
-export const createUserProfileDocument = async (userAuth, additionalData) => {
-    // check if we are getting a valued user
-    if (!userAuth) return; // if userAuth if false just return nothing
+//////////////////////////////// this is doing server side code with firebase ////////////////////////////
+// createUserProfileDocument function allows us to take user object and store it inside firebase database
+// use export so i can use it in other componenets
+export const createUserProfileDocument = async (userAuth, additionalData) => { // userAuth & additionalData are parameters
+    // STEP 1. check if we are getting a valued user ///////
+    if (!userAuth) return; // if userAuth if false just return nothing; this is normal 100% of the time
     // query inside firestore to see if it already exits
-    const userRef = firestore.doc(`users/${userAuth.uid}`);
-    const snapShot = await userRef.get();
+    const userRef = firestore.doc(`users/${userAuth.uid}`); // ????? where does userAuth.uid data comes from; why didnt i not use await   ?????
+    const snapShot = await userRef.get(); // getting a copy of the userRef(signed-in user)
 
-    // if user doesnt exit create it
+    // if user doesnt exit create it; but why is !bang nessessary
     if(!snapShot.exits) {
         // what data do we want to use from userAuth
-        const {displayName, email} = userAuth;
-        // when was the user data created
-        const createdAt = new Date();
-        // this is the data we will store to firebase store
+        const {displayName, email} = userAuth; // this is called refactoring
+        // when was the user data created; ES6 creating a function called createAt
+        const createdAt = new Date(); // new Date() is a javascript method
+        // this is the data we will store to firebase store; using try / catch function
         try {
             await userRef.set({ // object, if the user doesnt exit we will create it 
                 displayName,
@@ -44,8 +46,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         }
     }
     return userRef; // return userRef cuz i might want to do something with it
-} // now new users are being saved to firebase store database
-
+}; // now new users are being saved to firebase store database
+/////////////////////////////////////////////////////////////////////////////////////////////
 // Initialize Firebase
 firebase.initializeApp(config);
 
