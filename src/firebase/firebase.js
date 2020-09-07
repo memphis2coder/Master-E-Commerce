@@ -31,7 +31,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
     if(!snapShot.exits) {
         // what data do we want to use from userAuth
         const {displayName, email} = userAuth; // this is called refactoring
-        // when was the user data created; ES6 creating a function called createAt
+        // when was the user data created; ES6 creating a anonymous function 
         const createdAt = new Date(); // new Date() is a javascript method
         // this is the data we will store to firebase store; using try / catch function
         try {
