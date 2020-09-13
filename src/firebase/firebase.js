@@ -33,7 +33,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
         const {displayName, email} = userAuth; // this is called refactoring
         // when was the user data created; ES6 creating a anonymous function 
         const createdAt = new Date(); // new Date() is a javascript method
-        // this is the data we will store to firebase store; using try / catch function
+
+        // this is the data we will store to firebase store; using try / catch method
         try {
             await userRef.set({ // object, if the user doesnt exit we will create it 
                 displayName,
@@ -47,7 +48,9 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
     }
     return userRef; // return userRef cuz i might want to do something with it
 }; // now new users are being saved to firebase store database
+
 /////////////////////////////////////////////////////////////////////////////////////////////
+
 // Initialize Firebase
 firebase.initializeApp(config);
 
