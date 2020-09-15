@@ -24,12 +24,14 @@ class App extends React.Component {
   // lets be aware when a user signs in and signs out; this talks to firebase
   // step 2: store the data in the state of our app to use it in our app. 
   componentDidMount() {
+    // onAuthStateChanged is method from firebase
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => { // from auth import
       // check if a user signs in
       if (userAuth) { // if a new user is made
         // userRef is used to check if our database/user has updated & a refering to the user
+        // createUserProfileDocument is a method from firebase
         const userRef = await createUserProfileDocument(userAuth);
-        // You can listen to a document with the onSnapshot() method
+        // You can listen to a document with the onSnapshot() method from firebase
         userRef.onSnapshot(snapShot => {
           this.setState({
             currentUser : { // from this.state
