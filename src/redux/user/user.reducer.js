@@ -1,6 +1,6 @@
 // Initial State is for before any action happens, it is the state needed when the app first load and user do no action
 const INITIAL_STATE = {
-    currentUser = null
+    currentUser: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => { // function that gets the state object & action

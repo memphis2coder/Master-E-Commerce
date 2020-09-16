@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import { connect } from 'react-redux'; // connect makes our component a super component
 import { auth } from '../../firebase/firebase';
 
 import './Header.scss';
 
-export default function Header({ currentUser }) {
+const Header = ({ currentUser }) => {
     return (
         <div className="header">
             <Link className="logo" to="/">
@@ -24,4 +24,6 @@ export default function Header({ currentUser }) {
             </div>
         </div>
     )
-}
+};
+
+export default connect()(Header);
