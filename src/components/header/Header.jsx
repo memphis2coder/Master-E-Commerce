@@ -31,8 +31,10 @@ const Header = ({ currentUser }) => {
 // 1.how do i get the SET_CURRENT_USER from user.reducer
 const mapStateToProps = state => ({ // state is the root-reducer
     // return a object 
-    currentUser : state.user.currentUser // current user value
+    // 1. i want user value that will give me the userReducer from root-reducer.js USER
+    // 2. then i want the currentUser value from user.reducer CURRENTUSER
+    currentUser : state.user.currentUser // 
 });
 
 // connect function is what brings redux store into the react components
-export default connect(mapStateToProps)(Header); // currentUser is passed into connect
+export default connect(mapStateToProps)(Header); // mapStateToProps is passed into connect
