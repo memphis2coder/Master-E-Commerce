@@ -57,7 +57,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser}/>    
+        <Header />    
         <Switch> {/* switch allows nested routes to work properly*/}
           <Route exact path='/' component={HomePage} /> 
           <Route path='/shop/' component={ShopPage} />

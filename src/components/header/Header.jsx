@@ -14,6 +14,7 @@ const Header = ({ currentUser }) => {
             <div className="menu">
                 <Link className="menu-link" to="/shop">Shop</Link>
                 <Link className="menu-link" to="/contact">Contact</Link>
+
                 {
                     currentUser?
                     <div className="menu-link" onClick={() => auth.signOut()}>Sign Out</div>
@@ -26,4 +27,12 @@ const Header = ({ currentUser }) => {
     )
 };
 
-export default connect()(Header);
+////////////////////////// react-redux connecting header to store data  /////////////////
+// 1.how do i get the SET_CURRENT_USER from user.reducer
+const mapStateToProps = state => ({ // state is the root-reducer
+    // return a object 
+    currentUser : state.user.currentUser // current user value
+});
+
+// connect function is what brings redux store into the react components
+export default connect(mapStateToProps)(Header); // currentUser is passed into connect

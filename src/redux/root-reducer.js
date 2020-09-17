@@ -1,9 +1,10 @@
 // combines all of the root reducer together
 import { combineReducers } from 'redux'; // comes form the redux library;
+import userReducer from './user/user.reducer'; // import from user.reducer.js
 
-import userReducer from './user/user.reducer';
-
+// exporting combineReducers
 export default combineReducers({
+    // return a object that had a property of user
     user: userReducer
 })
 
