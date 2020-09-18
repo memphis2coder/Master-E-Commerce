@@ -53,13 +53,14 @@ class App extends React.Component {
         <Switch> {/* switch allows nested routes to work properly*/}
           <Route exact path='/' component={HomePage} /> 
           <Route path='/shop/' component={ShopPage} />
+          {/* redirect user to the homepage if they have signed in */}
           <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
         </Switch>
         </div>
       );
     }
   }
-
+  // this function allows me the get the current user to use in redirect
   const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser
   });
