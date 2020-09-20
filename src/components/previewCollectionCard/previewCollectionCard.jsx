@@ -1,9 +1,13 @@
 import React from 'react'
 import CustomButton from '../customButton/CustomButton';
 
+// bring in redux & add cart item action
+import {connect} from 'react-redux';
+import {addItem} from '../../redux/cart/cart.action';
+
 import './previewCollectionCard.scss';
 
-function previewCollectionCard({ id, name, price, imageUrl }) {
+function previewCollectionCard({ id, name, price, imageUrl, addItem }) {
     return (
         <div className="previewCard">
             <div
@@ -19,6 +23,15 @@ function previewCollectionCard({ id, name, price, imageUrl }) {
             <CustomButton inverted>Add to cart</CustomButton>
         </div>
     )
-}
+};
 
-export default previewCollectionCard;
+// connect collectionCard and add item redux
+const mapDispatchToProps = (dispatch) => ({
+    // return a object
+    // this function is receiving item and passing into addItem action
+    // now we can add addItem into previewCollectionCard as a prop
+    addItem: (item) => dispatch(addItem(item))
+});
+
+// pass null cuz we are not taking any state
+export default connect(null,mapDispatchToProps)(previewCollectionCard);
