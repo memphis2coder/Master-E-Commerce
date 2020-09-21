@@ -12,6 +12,7 @@ const PreviewCollection = ({title, items}) => { // receive title and items as pr
                         items
                             .filter((item, index) => index < 4) // show only four items
                             .map((item) => (
+                            // send item data to previewcollectioncard component
                             <PreviewCollectionCard key={item.id} item={item} />
                             ))
                     }
