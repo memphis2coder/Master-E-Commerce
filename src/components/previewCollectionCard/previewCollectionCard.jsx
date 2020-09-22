@@ -7,6 +7,7 @@ import {addItem} from '../../redux/cart/cart.action';
 
 import './previewCollectionCard.scss';
 
+// this data is being sent from previewcollection
 function previewCollectionCard({ id, name, price, imageUrl, addItem }) {
     return (
         <div className="previewCard">
