@@ -6,6 +6,7 @@ import { signInWithGoogle} from '../../firebase/firebase';
 import './SignIn.scss';
 
 class SignIn extends React.Component {
+    // class components starts with constructor and super
     constructor(props) {
         super(props)
 
