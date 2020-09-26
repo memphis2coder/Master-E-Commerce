@@ -6,7 +6,7 @@ import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'; 
 
 import './CartIcon.scss';
 
-// toggleCartHidden comes from redux cart.action
+// toggleCartHidden comes from redux cart.action redux folder
 const CartIcon = ({toggleCartHidden}) => { // pass toggleCartHidden as a argument
     return (
         <div className="cart-icon" onClick={toggleCartHidden}> 
