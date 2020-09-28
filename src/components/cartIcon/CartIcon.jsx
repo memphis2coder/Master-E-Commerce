@@ -9,6 +9,7 @@ import './CartIcon.scss';
 // toggleCartHidden comes from redux cart.action redux folder
 const CartIcon = ({toggleCartHidden}) => { // pass toggleCartHidden as a argument
     return (
+        // toogleCartHidden is a function?
         <div className="cart-icon" onClick={toggleCartHidden}> 
             <ShoppingIcon className="shopping-icon"/>
             <span className="item-count">0</span>
