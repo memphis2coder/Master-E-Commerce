@@ -8,7 +8,8 @@ import {addItem} from '../../redux/cart/cart.action';
 import './previewCollectionCard.scss';
 
 // this data is being sent from previewcollection
-function previewCollectionCard({ id, name, price, imageUrl, addItem }) {
+function previewCollectionCard({ item, addItem }) {
+    const {name, price, imageUrl} = item;
     return (
         <div className="previewCard">
             <div
@@ -21,7 +22,9 @@ function previewCollectionCard({ id, name, price, imageUrl, addItem }) {
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
-            <CustomButton inverted>Add to cart</CustomButton> 
+            <CustomButton onClick={() => addItem(item)} inverted>
+                Add to cart
+            </CustomButton> 
         </div>
     )
 };
