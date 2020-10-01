@@ -17,6 +17,7 @@ class ShopPage extends React.Component {
         return (
             <div className="shopPage">
                 {
+                    // destructuring
                     collections.map(({id, ...otherCollectionsProps}) => (
                         <PreviewCollection key={id} {...otherCollectionsProps} /> // previewCollection componenet
                     ))
