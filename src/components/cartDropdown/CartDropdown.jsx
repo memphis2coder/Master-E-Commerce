@@ -17,6 +17,7 @@ const CartDropdown = ({ cartItems }) => (
     </div>
 );
 
+// this connects to redux and component
 const mapStateToProps = (state) => ({
     cartItems: selectCartItems(state)
 });
