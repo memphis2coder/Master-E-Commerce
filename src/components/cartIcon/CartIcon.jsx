@@ -20,6 +20,8 @@ const CartIcon = ({toggleCartHidden, itemCount}) => { // pass toggleCartHidden a
     )
 };
 
+/////////////////// REDUX AND RESELECT ///////////////////////////////////
+
 // function that toggles the cart also connects to redux action
 const mapDispatchToProps = dispatch => ({ // dispatch connects this componenet to redux
     // return a object

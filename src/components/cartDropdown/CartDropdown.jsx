@@ -20,6 +20,9 @@ const CartDropdown = ({ cartItems }) => (
     </div>
 );
 
+
+/////////////////// REDUX AND RESELECT ///////////////////////////////////
+
 // this connects to redux and component
 const mapStateToProps = createStructuredSelector({
     // we dont need to use state
