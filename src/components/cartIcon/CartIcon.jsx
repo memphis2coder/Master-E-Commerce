@@ -5,6 +5,8 @@ import {toggleCartHidden} from '../../redux/cart/cart.action'; // bringing in th
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'; // this is the svg image
 import {selectCartItemsCount} from '../../redux/cart/cart.selectors';
 
+// reselect
+import {createStructuredSelector} from 'reselect';
 import './CartIcon.scss';
 
 // toggleCartHidden comes from redux cart.action redux folder
@@ -27,9 +29,9 @@ const mapDispatchToProps = dispatch => ({ // dispatch connects this componenet t
 
 // function to show the total number of items in cart connection to cart.reducer.js
 // this is a selector & i need to use reselect to save the data so it doesnt refresh all the time
-const mapStateToProps = (state) => ({
-    itemCount: selectCartItemsCount(state)
+const mapStateToProps = createStructuredSelector({
+    itemCount: selectCartItemsCount // no state is needed with selector
 });
 
-// null is passed as the default
+// pass in mapDispatchToProps and MapStateToProps
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

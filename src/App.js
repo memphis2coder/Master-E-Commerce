@@ -5,13 +5,15 @@ import Header from './components/header/Header';
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shopPage/ShopPage';
 import SignInPage from './pages/signInPage/SignInpage';
-
 // firebase
 import { auth, createUserProfileDocument } from './firebase/firebase'; // import auth to verify user is logged in
 // redux
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
 import './App.css';
+// reselector
+import {selectCurrentUser} from './redux/user/user.selector';
+import {createStructuredSelector} from 'reselect'
 
 class App extends React.Component {
   // lets close the user 
@@ -61,8 +63,9 @@ class App extends React.Component {
     }
   }
   // this function allows me the get the current user to use in redirect
-  const mapStateToProps = ({ user }) => ({
-    currentUser: user.currentUser
+  const mapStateToProps =  createStructuredSelector({
+    // using reselect
+    currentUser: selectCurrentUser // this comes from user.selector
   });
 
   // my app doesnt need current user data, app only sets it
