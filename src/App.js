@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './components/header/Header';
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shopPage/ShopPage';
+import CheckoutPage from './pages/checkout/CheckoutPage';
 import SignInPage from './pages/signInPage/SignInpage';
 // firebase
 import { auth, createUserProfileDocument } from './firebase/firebase'; // import auth to verify user is logged in
@@ -55,6 +56,7 @@ class App extends React.Component {
         <Switch> {/* switch allows nested routes to work properly*/}
           <Route exact path='/' component={HomePage} /> 
           <Route path='/shop/' component={ShopPage} />
+          <Route exact path='/checkout/' component={CheckoutPage} />
           {/* redirect user to the homepage if they have signed in */}
           <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
         </Switch>
