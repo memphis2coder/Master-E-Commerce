@@ -30,6 +30,17 @@ export const selectCartItemsCount = createSelector(
         )
 );
 
+// checkout page get the total items in cart
+export const selectCartTotal = createSelector(
+    [selectCartItems],
+    cartItems =>
+        cartItems.reduce(
+            (accumalatedQuantity, cartItem) =>
+                accumalatedQuantity + cartItem.quantity * cartItem.price,
+            0
+        )
+);
+
 
 
 
