@@ -1,6 +1,6 @@
 import React from 'react'
 // components
-import CheckoutItem from '../../components/cart-item/CartItem';
+import CheckoutItem from '../../components/checkout-item/checkout-item';
 // redux
 import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';

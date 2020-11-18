@@ -1,9 +1,9 @@
 import React from 'react';
 import FormInput from '../formInput/FormInput';
-import CustomButton from '../customButton/CustomButton';
+import CustomButton from '../custom-button/custom-button';
 import { signInWithGoogle} from '../../firebase/firebase';
 
-import './SignIn.scss';
+import './sign-in.styles.scss';
 
 class SignIn extends React.Component {
     // class components starts with constructor and super

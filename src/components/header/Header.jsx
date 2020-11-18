@@ -4,8 +4,8 @@ import { connect } from 'react-redux'; // connect makes our component a super co
 import { auth } from '../../firebase/firebase';
 import {createStructuredSelector} from 'reselect';
 // components
-import CartIcon from '../cartIcon/CartIcon';
-import CartDropdown from '../cartDropdown/CartDropdown';
+import CartIcon from '../cart-icon/cart-icon';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
 import {selectCartHidden} from '../../redux/cart/cart.selectors';
 import {selectCurrentUser} from '../../redux/user/user.selector';
 

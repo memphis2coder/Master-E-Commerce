@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // components
 import Header from './components/header/Header';
+// pages
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shopPage/ShopPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';

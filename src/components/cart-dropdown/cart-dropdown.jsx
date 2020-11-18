@@ -1,8 +1,8 @@
 import React from 'react';
-import './CartDropdown.scss';
+import './cart-dropdown.styles.scss';
 // components
-import CustomButton from '../customButton/CustomButton';
-import CartItem from '../cart-item/CartItem';
+import CustomButton from '../custom-button/custom-button';
+import CartItem from '../cart-item/cart-item';
 // react router
 import {withRouter} from 'react-router-dom';
 // redux
