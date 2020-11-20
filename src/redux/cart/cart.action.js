@@ -10,8 +10,13 @@ export const toggleCartHidden = () => ({
 // action type objects can be type and payload
 // playload equals to the item(data)
 // now bring this into our component so i can use it
-export const addItem = (item) => ({
+export const addItem = item => ({
   type: CartActionTypes.ADD_ITEM,
+  payload: item
+});
+
+export const removeItem = item => ({
+  type: CartActionTypes.REMOVE_ITEM,
   payload: item
 });
 
@@ -20,8 +25,5 @@ export const clearItemFromCart = item => ({
   payload: item
 });
 
-export const removeItem = item => ({
-  type: CartActionTypes.REMOVE_ITEM,
-  paylaod: item
-});
+
 
