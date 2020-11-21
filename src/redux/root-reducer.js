@@ -1,13 +1,19 @@
-// combines all of the root reducer together
-import { combineReducers } from 'redux'; // comes form the redux library;
-import userReducer from './user/user.reducer'; // import from user.reducer.js
-import cartReducer from './cart/cart.reducer'; // import from cart.reducer.js
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-// exporting combineReducers
-export default combineReducers({
-    // return a object that had a property of user
-    user: userReducer,
-    cart: cartReducer
-})
+import userReducer from './user/user.reducer';
+import cartReducer from './cart/cart.reducer';
 
-// we still have to bring into our store and instantiate**create an object using functions**
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart']
+};
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  cart: cartReducer
+});
+
+export default persistReducer(persistConfig, rootReducer);
