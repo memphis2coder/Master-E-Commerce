@@ -56,8 +56,8 @@ class App extends React.Component {
         <Header />    
         <Switch> {/* switch allows nested routes to work properly*/}
           <Route exact path='/' component={HomePage} /> 
-          <Route path='/shop/' component={ShopPage} />
-          <Route exact path='/checkout/' component={CheckoutPage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
           {/* redirect user to the homepage if they have signed in */}
           <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
         </Switch>
