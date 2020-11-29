@@ -4,6 +4,7 @@ import CollectionItem from '../collection-item/collection-item';
 
 import './collection-preview.styles.scss';
 
+// display only 4 items
 const CollectionPreview = ({ title, items }) => (
     <div className='collection-preview'>
       <h1 className='title'>{title.toUpperCase()}</h1>
