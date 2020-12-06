@@ -1,3 +1,13 @@
+.menu-item-container {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .menu-item-container {
+    margin-top: 0px;
+  }
+}
+
 .menu-item {
   min-width: 300px;
   height: 240px;
@@ -13,14 +23,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid red;
+  border: 1px solid black;
   margin: 0 7.5px 15px;
   background-position: center;
   background-size: cover;
-}
-
-.menu-item.large {
-  width: 300px;
 }
 
 .menu-item:hover {
@@ -61,5 +67,11 @@
   font-weight: lighter;
   font-size: 16px;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+  .menu-item {
+    height: 200px;
+  }
 }
 /*# sourceMappingURL=MenuItem.css.map */
