@@ -21,6 +21,15 @@
   grid-gap: 10px;
 }
 
+@media screen and (max-width: 800px) {
+  .collection-page .items {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    margin: 0 auto;
+  }
+}
+
 .collection-page .items .collection-item {
   margin-bottom: 30px;
 }

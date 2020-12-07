@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=ShopPage.css.map */
+@media screen and (max-width: 800px) {
+  .shop-page {
+    padding-top: 150px;
+  }
+}
+/*# sourceMappingURL=ShopPage.css.map */

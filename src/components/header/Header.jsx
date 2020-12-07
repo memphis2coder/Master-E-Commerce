@@ -10,12 +10,14 @@ import {selectCartHidden} from '../../redux/cart/cart.selectors';
 import {selectCurrentUser} from '../../redux/user/user.selector';
 
 import './Header.scss';
+import logo from '../../assets/logo.png';
 
 const Header = ({ currentUser, hidden }) => {
     return (
         <div className="header">
             <Link className="logo" to="/">
-                HOME
+                <img src={logo} alt="site logo"></img>
+                Tk Clothing Company
             </Link>
             <div className="menu">
                 <Link className="menu-link" to="/shop">Shop</Link>

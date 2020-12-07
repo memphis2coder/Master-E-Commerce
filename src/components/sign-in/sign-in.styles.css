@@ -14,6 +14,12 @@
   padding: 5px 0;
 }
 
+@media screen and (max-width: 800px) {
+  .sign-in .title {
+    text-align: center;
+  }
+}
+
 .sign-in .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -21,5 +27,12 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .sign-in .buttons {
+    display: block;
+    text-align: center;
+  }
 }
 /*# sourceMappingURL=sign-in.styles.css.map */

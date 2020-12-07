@@ -6,10 +6,17 @@
 
     .title {
         padding: 5px 0;
+        @media screen and (max-width: 800px) {
+            text-align: center;
+        }
     }
 
     .buttons {
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: 800px) {
+            display: block;
+            text-align: center;
+        }
     }
 }

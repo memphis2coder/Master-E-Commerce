@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEI,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EAFvC,AAAA,UAAU,CAAC;IAGH,WAAW,EAAE,KAAK;GAEzB",
     "sources": [
         "ShopPage.scss"
     ],
