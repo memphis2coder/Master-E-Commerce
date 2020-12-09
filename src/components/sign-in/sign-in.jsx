@@ -1,27 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import FormInput from '../formInput/FormInput';
 import CustomButton from '../custom-button/custom-button';
 import { signInWithGoogle} from '../../firebase/firebase';
 
 import './sign-in.styles.scss';
 
-class SignIn extends React.Component {
-    // class components starts with constructor and super
-    constructor(props) {
-        super(props)
+const SignIn = () => {
+    
+    const [userCredentials, setCredentials] = useState({email: '', password: ''});
+    
 
-        this.state = {
-            email: "", // set initial email state to empty
-            password: "", // set initial password state to empty
-        }
-    }
-
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault(); // prevent default action
-        this.state({ email: "", password: "" }) // reset input fields after submit
+        const { email, password } = userCredentials;
     }
 
-    handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target; // pulling the name and value from target
         this.setState({ [name]: value }); // now i can use this function on both input fields
     }
