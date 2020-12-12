@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import FormInput from '../formInput/FormInput';
 import CustomButton from '../custom-button/custom-button';
@@ -7,25 +7,23 @@ import {auth, createUserProfileDocument} from '../../firebase/firebase';
 
 import './sign-up.styles.scss';
 
-class SignUp extends React.Component {
-    constructor() {
-        super();
+const SignUp = () => {
+    const [userCredentials, setUserCredentials] = useState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
+    
+    // destructure
+    const {displayName, email, password, confirmPassword} = userCredentials;
 
-        this.state = {
-            displayName: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
-        }
-    }
-
-    onSubmit = async event => {
+    const onSubmit = async event => {
         event.preventDefault();
-        // destructure
-        const {displayName, email, password, confirmPassword} = this.state;
+        
 
         if (password !== confirmPassword) { // if passwords dont match send the user alert
-            alert("passwords dont match");
+            alert("passwords don't match");
             return;
         }
         try {
@@ -34,37 +32,36 @@ class SignUp extends React.Component {
             // run createUserProfileDocument with the user and displayName
             await createUserProfileDocument(user, {displayName});
 
-            this.setState({ // reset input fields
-                displayName: "",
-                email: "",
-                password: "",
-                confirmPassword: ""
-            })
+            // userCredentials({ // reset input fields
+            //     displayName: "",
+            //     email: "",
+            //     password: "",
+            //     confirmPassword: ""
+            // })
 
         } catch (error) {
             console.error(error)
         }
     };
 
-    handleChange = event => { // this way we can use hangleChange on all input fields
+    const handleChange = event => { // this way we can use hangleChange on all input fields
         const {name, value} = event.target;
 
-        this.setState({[name]: value});
+        setUserCredentials({...userCredentials, [name]: value});
     }
 
-    render () {
-        // destructure
-        const {displayName, email, password, confirmPassword} = this.state;
+    
+        
         return (
             <div className="sign-up">
                 <h2 className="title">I do not have a account</h2>
                 <span className="title">Sign up with your email and password</span>
-                    <form className="sign-up-form" onSubmit={this.onSubmit}>
+                    <form className="sign-up-form" onSubmit={onSubmit}>
                         <FormInput 
                             type="text"
                             name="displayName"
                             value={displayName}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                             label="display name"
                             required
                         />
@@ -72,7 +69,7 @@ class SignUp extends React.Component {
                             type="email"
                             name="email"
                             value={email}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                             label="email"
                             required
                         />
@@ -80,7 +77,7 @@ class SignUp extends React.Component {
                             type="password"
                             name="password"
                             value={password}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                             label="password"
                             required
                         />
@@ -88,7 +85,7 @@ class SignUp extends React.Component {
                             type="password"
                             name="confirmPassword"
                             value={confirmPassword}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                             label="confirm password"
                             required
                         />
@@ -97,6 +94,6 @@ class SignUp extends React.Component {
             </div>
         )
     }
-}
+
 
 export default SignUp;

@@ -8,7 +8,6 @@ import './sign-in.styles.scss';
 const SignIn = () => {
     
     const [userCredentials, setCredentials] = useState({email: '', password: ''});
-    
     const { email, password } = userCredentials;
 
     const handleSubmit = (e) => {
