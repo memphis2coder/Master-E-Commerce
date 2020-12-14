@@ -14,9 +14,9 @@
 
 @media screen and (max-width: 800px) {
   .homepage {
-    padding: 150px;
     margin: 0;
     width: 100%;
+    padding-top: 0;
   }
 }
 /*# sourceMappingURL=homepage.css.map */

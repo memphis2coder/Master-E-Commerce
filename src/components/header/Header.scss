@@ -4,23 +4,22 @@
     align-items: center;
     justify-content: space-between;
     padding: 3rem 0rem;
-    position: fixed;
+    //position: fixed;
     width: 100%;
     background-color: white;
     z-index: 100;
 
     @media screen and (max-width: 800px) {
-        padding: 10px;
-        height: 120px;
-        margin-bottom: 50px;
+        flex-direction: column;    
     }
 }
 
 .menu {
     display: flex;
     align-items: center;
+    
     @media screen and (max-width: 800px) {
-        margin: 0 auto;
+        margin: 20px auto 0;
     }
 }
 

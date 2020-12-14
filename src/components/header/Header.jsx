@@ -21,8 +21,9 @@ const Header = ({ currentUser, hidden }) => {
             </Link>
             <div className="menu">
                 <Link className="menu-link" to="/shop">Shop</Link>
+                {/** 
                 <Link className="menu-link" to="/contact">Contact</Link>
-
+                */}
                 {
                     currentUser?
                     <div className="menu-link" onClick={() => auth.signOut()}>Sign Out</div>

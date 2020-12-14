@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 800px) {
   .signIn-and-singUp {
-    padding: 150px 10px;
+    padding-top: 0;
   }
 }
 /*# sourceMappingURL=SignInPage.css.map */
