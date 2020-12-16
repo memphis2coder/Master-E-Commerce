@@ -19,6 +19,7 @@
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+  width: 100vw;
 }
 
 @media screen and (max-width: 800px) {

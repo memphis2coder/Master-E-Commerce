@@ -6,7 +6,7 @@
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-top: 150px;
+  padding-top: 50px;
 }
 
 @media screen and (max-width: 800px) {
