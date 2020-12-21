@@ -6,11 +6,14 @@ import CollectionPage from '../collection/collectionPage';
 
 import './ShopPage.scss';
 
-const ShopPage = ({ match }) => (
-    <div className='shop-page'>
-        <Route exact path={`${match.path}`} component={CollectionsOverview} />
-        <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
-    </div>
-);
+const ShopPage = ({ match }) => {
+    console.log(match);
+
+    return (
+        <div className='shop-page'>
+            <Route exact path={`${match.path}`} component={CollectionsOverview} />
+            <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+        </div>
+    )};
 
 export default ShopPage;

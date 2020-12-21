@@ -1,4 +1,10 @@
 .shop-page {
   padding: 0 80px;
 }
+
+@media screen and (max-width: 800px) {
+  .shop-page {
+    padding: 0;
+  }
+}
 /*# sourceMappingURL=ShopPage.css.map */
