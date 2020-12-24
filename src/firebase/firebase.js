@@ -25,9 +25,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
     if (!userAuth) return; // if userAuth if false just return nothing; this is normal 100% of the time
     // query inside firestore to see if it already exits
     const userRef = firestore.doc(`users/${userAuth.uid}`); // ????? where does userAuth.uid data comes from; why didnt i not use await   ?????
+    
     const snapShot = await userRef.get(); // getting a copy of the userRef(signed-in user)
 
-    // if user doesnt exit create it; but why is !bang nessessary
+    // if user doesnt exit create it
     if(!snapShot.exits) {
         // what data do we want to use from userAuth
         const {displayName, email} = userAuth; // this is called refactoring
@@ -54,18 +55,20 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
 // Initialize Firebase
 firebase.initializeApp(config);
 
+export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+    console.log(collectionRef,"hello world");
+};
+
 // export firebase/auth
 export const auth = firebase.auth();
-
 // export firebase/firestore
 export const firestore = firebase.firestore();
 
 // Create an instance of the Google provider object
 var provider = new firebase.auth.GoogleAuthProvider();
-
 // custom OAuth provider parameters that you want to send with the OAuth request.
 provider.setCustomParameters({'prompt': 'select_account'});
-
 // To sign in with a pop-up window, call signInWithPopup
 export const signInWithGoogle = () => auth.signInWithPopup(provider)
 

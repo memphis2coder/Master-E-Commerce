@@ -8,7 +8,7 @@ import ShopPage from './pages/shopPage/ShopPage';
 import CheckoutPage from './pages/checkout/CheckoutPage';
 import SignInPage from './pages/signInPage/SignInpage';
 // firebase
-import { auth, createUserProfileDocument } from './firebase/firebase'; // import auth to verify user is logged in
+import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase'; // import auth to verify user is logged in
 // redux
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
@@ -16,6 +16,7 @@ import './App.css';
 // reselector
 import {selectCurrentUser} from './redux/user/user.selector';
 import {createStructuredSelector} from 'reselect'
+import {selectCollectionsForPreview} from './redux/shop/shop.selectors';
 
 class App extends React.Component {
   // lets close the user 
@@ -24,7 +25,8 @@ class App extends React.Component {
   // lets be aware when a user signs in and signs out; this talks to firebase
   // step 2: store the data in the state of our app to use it in our app. 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser, collectionsArray} = this.props;
+
     // onAuthStateChanged is method from firebase
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => { // from auth import
       // check if a user signs in
@@ -42,6 +44,7 @@ class App extends React.Component {
         }
         
         setCurrentUser(userAuth) // when the user logs out set the user to null; ** why is userAuth null?
+        addCollectionAndDocuments('collections', collectionsArray)
     });
   };
 
@@ -68,7 +71,8 @@ class App extends React.Component {
   // this function allows me the get the current user to use in redirect
   const mapStateToProps =  createStructuredSelector({
     // using reselect
-    currentUser: selectCurrentUser // this comes from user.selector
+    currentUser: selectCurrentUser, // this comes from user.selector
+    collectionsArray: selectCollectionsForPreview
   });
 
   // my app doesnt need current user data, app only sets it
