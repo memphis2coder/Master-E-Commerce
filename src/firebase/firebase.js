@@ -17,6 +17,9 @@ const config = {
     measurementId: "G-FQN9LTL86Y"
 };
 
+// Initialize Firebase
+firebase.initializeApp(config);
+
 //////////////////////////////// this is doing server side code with firebase ////////////////////////////
 // createUserProfileDocument function allows us to take user object and store it inside firebase database
 // use export so i can use it in other componenets
@@ -52,13 +55,38 @@ export const createUserProfileDocument = async (userAuth, additionalData) => { /
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-// Initialize Firebase
-firebase.initializeApp(config);
-
-export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = firestore.collection(collectionKey);
-    console.log(collectionRef,"hello world");
+    
+    const batch = firestore.batch();
+    objectsToAdd.forEach(obj => { // loop through array and batch the calls together
+        const newDocRef = collectionRef.doc();
+        batch.set(newDocRef, obj);
+    });
+
+    return await batch.commit() // this fires off our batch request
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+        const {title, items} = doc.data()
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        };
+    });
+
+    return transformedCollection.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    },{})
+};
+
+
 
 // export firebase/auth
 export const auth = firebase.auth();
@@ -66,11 +94,12 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // Create an instance of the Google provider object
-var provider = new firebase.auth.GoogleAuthProvider();
+// var provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 // custom OAuth provider parameters that you want to send with the OAuth request.
-provider.setCustomParameters({'prompt': 'select_account'});
+googleProvider.setCustomParameters({'prompt': 'select_account'});
 // To sign in with a pop-up window, call signInWithPopup
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 // export the entire library
 export default firebase;

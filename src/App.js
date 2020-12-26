@@ -1,21 +1,26 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+// redux
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect'
+
+import './App.css';
+
 // components
 import Header from './components/header/Header';
+
 // pages
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shopPage/ShopPage';
-import CheckoutPage from './pages/checkout/CheckoutPage';
 import SignInPage from './pages/signInPage/SignInpage';
+import CheckoutPage from './pages/checkout/CheckoutPage';
+
 // firebase
-import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase'; // import auth to verify user is logged in
-// redux
-import {connect} from 'react-redux';
+import { auth, createUserProfileDocument,addCollectionAndDocuments } from './firebase/firebase'; // import auth to verify user is logged in
+
 import {setCurrentUser} from './redux/user/user.actions';
-import './App.css';
-// reselector
 import {selectCurrentUser} from './redux/user/user.selector';
-import {createStructuredSelector} from 'reselect'
+
 import {selectCollectionsForPreview} from './redux/shop/shop.selectors';
 
 class App extends React.Component {
@@ -25,7 +30,7 @@ class App extends React.Component {
   // lets be aware when a user signs in and signs out; this talks to firebase
   // step 2: store the data in the state of our app to use it in our app. 
   componentDidMount() {
-    const {setCurrentUser, collectionsArray} = this.props;
+    const {setCurrentUser,collectionsArray} = this.props;
 
     // onAuthStateChanged is method from firebase
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => { // from auth import
@@ -44,7 +49,9 @@ class App extends React.Component {
         }
         
         setCurrentUser(userAuth) // when the user logs out set the user to null; ** why is userAuth null?
-        addCollectionAndDocuments('collections', collectionsArray)
+        addCollectionAndDocuments(
+          'collections', 
+          collectionsArray.map(({title, items}) => ({title, items})));
     });
   };
 
